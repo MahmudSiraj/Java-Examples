@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="colourfulcircle" default="all">
+  
+  
+  <property file="colourfulcircle.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.klib"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.swc"/>
+    <include name="*.war"/>
+    <include name="*.zip"/>
+    <include name="*.ane"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.11" value="${jdk.home.11}/bin"/>
+  <path id="jdk.classpath.11">
+    <fileset dir="${jdk.home.11}">
+      <include name="../Home!/java.base"/>
+      <include name="../Home!/java.compiler"/>
+      <include name="../Home!/java.datatransfer"/>
+      <include name="../Home!/java.desktop"/>
+      <include name="../Home!/java.instrument"/>
+      <include name="../Home!/java.logging"/>
+      <include name="../Home!/java.management"/>
+      <include name="../Home!/java.management.rmi"/>
+      <include name="../Home!/java.naming"/>
+      <include name="../Home!/java.net.http"/>
+      <include name="../Home!/java.prefs"/>
+      <include name="../Home!/java.rmi"/>
+      <include name="../Home!/java.scripting"/>
+      <include name="../Home!/java.se"/>
+      <include name="../Home!/java.security.jgss"/>
+      <include name="../Home!/java.security.sasl"/>
+      <include name="../Home!/java.smartcardio"/>
+      <include name="../Home!/java.sql"/>
+      <include name="../Home!/java.sql.rowset"/>
+      <include name="../Home!/java.transaction.xa"/>
+      <include name="../Home!/java.xml"/>
+      <include name="../Home!/java.xml.crypto"/>
+      <include name="../Home!/jdk.accessibility"/>
+      <include name="../Home!/jdk.aot"/>
+      <include name="../Home!/jdk.attach"/>
+      <include name="../Home!/jdk.charsets"/>
+      <include name="../Home!/jdk.compiler"/>
+      <include name="../Home!/jdk.crypto.cryptoki"/>
+      <include name="../Home!/jdk.crypto.ec"/>
+      <include name="../Home!/jdk.dynalink"/>
+      <include name="../Home!/jdk.editpad"/>
+      <include name="../Home!/jdk.hotspot.agent"/>
+      <include name="../Home!/jdk.httpserver"/>
+      <include name="../Home!/jdk.internal.ed"/>
+      <include name="../Home!/jdk.internal.jvmstat"/>
+      <include name="../Home!/jdk.internal.le"/>
+      <include name="../Home!/jdk.internal.opt"/>
+      <include name="../Home!/jdk.internal.vm.ci"/>
+      <include name="../Home!/jdk.internal.vm.compiler"/>
+      <include name="../Home!/jdk.internal.vm.compiler.management"/>
+      <include name="../Home!/jdk.jartool"/>
+      <include name="../Home!/jdk.javadoc"/>
+      <include name="../Home!/jdk.jcmd"/>
+      <include name="../Home!/jdk.jconsole"/>
+      <include name="../Home!/jdk.jdeps"/>
+      <include name="../Home!/jdk.jdi"/>
+      <include name="../Home!/jdk.jdwp.agent"/>
+      <include name="../Home!/jdk.jfr"/>
+      <include name="../Home!/jdk.jlink"/>
+      <include name="../Home!/jdk.jshell"/>
+      <include name="../Home!/jdk.jsobject"/>
+      <include name="../Home!/jdk.jstatd"/>
+      <include name="../Home!/jdk.localedata"/>
+      <include name="../Home!/jdk.management"/>
+      <include name="../Home!/jdk.management.agent"/>
+      <include name="../Home!/jdk.management.jfr"/>
+      <include name="../Home!/jdk.naming.dns"/>
+      <include name="../Home!/jdk.naming.rmi"/>
+      <include name="../Home!/jdk.net"/>
+      <include name="../Home!/jdk.pack"/>
+      <include name="../Home!/jdk.rmic"/>
+      <include name="../Home!/jdk.scripting.nashorn"/>
+      <include name="../Home!/jdk.scripting.nashorn.shell"/>
+      <include name="../Home!/jdk.sctp"/>
+      <include name="../Home!/jdk.security.auth"/>
+      <include name="../Home!/jdk.security.jgss"/>
+      <include name="../Home!/jdk.unsupported"/>
+      <include name="../Home!/jdk.unsupported.desktop"/>
+      <include name="../Home!/jdk.xml.dom"/>
+      <include name="../Home!/jdk.zipfs"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/javafx-swt.jar"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/javafx.base.jar"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/javafx.controls.jar"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/javafx.fxml.jar"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/javafx.graphics.jar"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/javafx.media.jar"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/javafx.properties"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/javafx.swing.jar"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/javafx.web.jar"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libdecora_sse.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libfxplugins.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libglass.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libglib-lite.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libgstreamer-lite.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libjavafx_font.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libjavafx_iio.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libjfxmedia_avf.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libjfxmedia.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libjfxwebkit.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libprism_common.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libprism_es2.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/libprism_sw.dylib"/>
+      <include name="../../../../Extensions/javafx-sdk-11.0.2/lib/src.zip"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.11}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.11}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.11"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.lib.classpath">
+    <fileset dir="${path.variable.path_to_fx}">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_colourfulcircle.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.colourfulcircle, clean.artifact.javafxapp" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.colourfulcircle" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.javafxapp" value="${basedir}/out/artifacts/JavaFXApp"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="artifact.temp.output.JavaFXApp" value="${artifacts.temp.dir}/JavaFXApp.jar"/>
+    <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant" classpath="${jdk.home.11}/lib/ant-javafx.jar"/>
+  </target>
+  
+  <target name="clean.artifact.javafxapp" description="clean JavaFXApp artifact output">
+    <delete dir="${artifact.output.javafxapp}"/>
+  </target>
+  
+  <target name="artifact.javafxapp" depends="init.artifacts, compile.module.colourfulcircle" description="Build &#39;JavaFXApp&#39; artifact" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+    <mkdir dir="${artifact.output.javafxapp}"/>
+    <copy todir="${artifact.temp.output.JavaFXApp}">
+      <fileset dir="${colourfulcircle.output.dir}"/>
+    </copy>
+    <mkdir dir="${artifact.temp.output.JavaFXApp}/META-INF"/>
+    <copy file="${basedir}/src/sample/META-INF/MANIFEST.MF" tofile="${artifact.temp.output.JavaFXApp}/META-INF/MANIFEST.MF"/>
+    <fx:fileset id="all_but_JavaFXApp" dir="${artifact.temp.output.JavaFXApp}" includes="**/*.jar">
+      <exclude name="JavaFXApp.jar"/>
+    </fx:fileset>
+    <fx:fileset id="all_JavaFXApp" dir="${artifact.temp.output.JavaFXApp}" includes="**/*.jar"/>
+    <fx:application id="JavaFXApp_id" name="JavaFXApp" mainClass="sample.ColourfulCircle"/>
+    <fx:jar destfile="${artifact.temp.output.JavaFXApp}/JavaFXApp.jar">
+      <fx:application refid="JavaFXApp_id"/>
+      <fileset dir="${artifact.temp.output.JavaFXApp}" excludes="**/*.jar"/>
+      <fx:resources>
+        <fx:fileset refid="all_but_JavaFXApp"/>
+      </fx:resources>
+      <manifest>
+        <attribute name="Implementation-Title" value=""/>
+        <attribute name="Implementation-Version" value=""/>
+        <attribute name="Implementation-Vendor" value=""/>
+      </manifest>
+    </fx:jar>
+    <fx:deploy width="600" height="400" updatemode="background" outdir="${artifact.temp.output.JavaFXApp}/deploy" outfile="JavaFXApp">
+      <fx:application refid="JavaFXApp_id"/>
+      <fx:resources>
+        <fx:fileset refid="all_JavaFXApp"/>
+      </fx:resources>
+    </fx:deploy>
+    <copy todir="${artifact.output.javafxapp}">
+      <fileset dir="${artifact.temp.output.JavaFXApp}/deploy"/>
+    </copy>
+    <delete includeemptydirs="true">
+      <fileset dir="${artifact.temp.output.JavaFXApp}"/>
+    </delete>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.javafxapp" description="Build all artifacts">
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

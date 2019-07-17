@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MyModAppDemo",
+            "request": "launch",
+            "mainClass": "appstart/appstart.mymodappdemo.MyModAppDemo"
+        }
+    ]
+}

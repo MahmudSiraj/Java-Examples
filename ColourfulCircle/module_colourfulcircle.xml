@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_colourfulcircle" default="compile.module.colourfulcircle">
+  <dirname property="module.colourfulcircle.basedir" file="${ant.file.module_colourfulcircle}"/>
+  
+  <property name="module.jdk.home.colourfulcircle" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.colourfulcircle" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.colourfulcircle" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.colourfulcircle" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  
+  <property name="colourfulcircle.output.dir" value="${module.colourfulcircle.basedir}/out/production/ColourfulCircle"/>
+  <property name="colourfulcircle.testoutput.dir" value="${module.colourfulcircle.basedir}/out/test/ColourfulCircle"/>
+  
+  <path id="colourfulcircle.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="colourfulcircle.module.production.classpath">
+    <path refid="${module.jdk.classpath.colourfulcircle}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="colourfulcircle.runtime.production.module.classpath">
+    <pathelement location="${colourfulcircle.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="colourfulcircle.module.classpath">
+    <path refid="${module.jdk.classpath.colourfulcircle}"/>
+    <pathelement location="${colourfulcircle.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="colourfulcircle.runtime.module.classpath">
+    <pathelement location="${colourfulcircle.testoutput.dir}"/>
+    <pathelement location="${colourfulcircle.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.colourfulcircle">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.colourfulcircle">
+    <patternset refid="excluded.from.module.colourfulcircle"/>
+  </patternset>
+  
+  <path id="colourfulcircle.module.sourcepath">
+    <dirset dir="${module.colourfulcircle.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.colourfulcircle" depends="compile.module.colourfulcircle.production,compile.module.colourfulcircle.tests" description="Compile module ColourfulCircle"/>
+  
+  <target name="compile.module.colourfulcircle.production" depends="register.custom.compilers" description="Compile module ColourfulCircle; production classes">
+    <mkdir dir="${colourfulcircle.output.dir}"/>
+    <javac2 destdir="${colourfulcircle.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.colourfulcircle}/javac">
+      <compilerarg line="${compiler.args.colourfulcircle}"/>
+      <bootclasspath refid="colourfulcircle.module.bootclasspath"/>
+      <classpath refid="colourfulcircle.module.production.classpath"/>
+      <src refid="colourfulcircle.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.colourfulcircle"/>
+    </javac2>
+    
+    <copy todir="${colourfulcircle.output.dir}">
+      <fileset dir="${module.colourfulcircle.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.colourfulcircle.tests" depends="register.custom.compilers,compile.module.colourfulcircle.production" description="compile module ColourfulCircle; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.colourfulcircle" description="cleanup module">
+    <delete dir="${colourfulcircle.output.dir}"/>
+    <delete dir="${colourfulcircle.testoutput.dir}"/>
+  </target>
+</project>
